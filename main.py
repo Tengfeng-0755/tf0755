@@ -7,34 +7,33 @@ import time
 import PIL
 import pynput   #其他诸如pymouse,pykeyboard，安装了都不能兼容，在3.8
 
-from PIL import Image
-from PIL import ImageGrab
-import imagehash3
+
 
 import os,sys
 
-from WebApp.mouse_webapp  import   mouse_point_test,mouse_listener,mouse_press_test,mouse_scroll_test   #调用同一项目下不同目录文件的函数
+from WebApp.mouse_webapp  import   mouse_press_test,mouse_listen_test   #调用同一项目下不同目录文件的函数
 from WebApp.keyboard_webapp import      keyboard_listener,keyboard_press_test
+from WebApp.screenshot import screen_shot,screen_shot_fullscreen,screen_shot_box
+from WebApp.compareimage_with_screen import match_image_test
+from WebApp.sscq_run import game_run_test
 #   脚本是顺序运行
 
-# 程序信息函数
-def print_program_inf(name,ver):
-    print(f'Programer name: {name}')  # 打印脚本名。
-    print(f'Version: {ver}')  # 打印版本。
+
 
 if __name__ == '__main__':
-#    mouse_press_test()
-#    pynput.mouse.Events()
-#    pynput.mouse.Listener()
-    x = "sscq自动脚本";y = "V1.00"
-    print_program_inf(x,y)
-    time.sleep(5)
-    # mouse_point_test()
-    # mouse_listener()
+#自动点击指定位置
+    # game_run_test()
+    time.sleep(1)
+#截屏
+    # screen_shot_fullscreen()
+    # box_l = [1,1,1500,1500]
+    # screen_shot_box(box_l)
+#鼠标侦听
+    # mouse_listen_test()
+#鼠标移动及点击
     # mouse_press_test()
-    # mouse_scroll_test()
-    # keyboard_listener()
-    # keyboard_press_test()
+#模板匹配
+    # match_image_test()
 
 
 # 访问 https://www.jetbrains.com/help/pycharm/ 获取 PyCharm 帮助
