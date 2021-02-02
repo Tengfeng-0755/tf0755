@@ -6,7 +6,7 @@ from win32gui import *
 import time
 import PIL
 import pynput   #其他诸如pymouse,pykeyboard，安装了都不能兼容，在3.8
-
+import easygui
 
 
 import os,sys
@@ -16,6 +16,7 @@ from WebApp.keyboard_webapp import      keyboard_listener,keyboard_press_test
 from WebApp.screenshot import screen_shot,screen_shot_fullscreen,screen_shot_box
 from WebApp.compareimage_with_screen import match_image_test
 from WebApp.sscq_run import game_run_test
+from WebApp.Webapp_gui import app_gui
 #   脚本是顺序运行
 
 
@@ -24,6 +25,8 @@ if __name__ == '__main__':
 #自动点击指定位置
     # game_run_test()
     time.sleep(1)
+#绘制一个界面，修改默认的config
+    app_gui()
 #截屏
     # screen_shot_fullscreen()
     # box_l = [1,1,1500,1500]
