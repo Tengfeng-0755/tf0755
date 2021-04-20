@@ -1,5 +1,5 @@
 import time
-from WebApp.mouse_webapp  import   mouse_event,mouse_click_botton   #调用同一项目下不同目录文件的函数
+from tf0755_git.WebApp.mouse_webapp  import   mouse_event,mouse_click_botton   #调用同一项目下不同目录文件的函数
 from enum import Enum
 
 class   mode_type(Enum):

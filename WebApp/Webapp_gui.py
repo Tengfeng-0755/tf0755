@@ -155,6 +155,7 @@
 # 然后你的应用程序必须创建一个该类的对象（暂时称之为"设置"对象）。
 # 设置类的构造函数（__init__ 方法）必须初始化所有的你想要它所记住的那些值。
 # 一旦你这样做了，你就可以在"设置"对象中通过设定值去实例化变量，从而很简单地记住设置。之后使用 settings.store() 方法在硬盘上持久化设置对象。
+# 除了例子里面的# user，server，可以添加任何你想添加的项目，比如IP，PORT，等等
 # 下面是创建一个"设置"类的例子：
 # # -----------------------------------------------------------------------
 # # create "settings", a persistent Settings object
@@ -192,12 +193,14 @@
 # except:
 #         exceptionbox()
 # -*- coding:utf-8 -*-
-import os
-import pickle
+# import os
+# import pickle
 import time
 import easygui as g
 from easygui import EgStore
-
+from tf0755_git.WebApp.mouse_webapp import mouse_event,mouse_click_botton   #重装系统后，重新安装3.8，语法又要求带相对路径
+# from WebApp.mouse_webapp  import  mouse_event,mouse_click_botton
+# from WebApp.mouse_webapp  import   mouse_press_test,mouse_listen_test   #调用同一项目下不同目录文件的函数
 class Settings(EgStore):
     def __init__(self, filename):  # filename is required
         # -------------------------------------------------
@@ -205,7 +208,9 @@ class Settings(EgStore):
         # this particular application wants to remember.
         # -------------------------------------------------
         self.userId = ""
-        self.targetServer = ""
+        self.usr_structor = ""
+        self.App_IP_config = ""
+        self.App_Port_config = ""
 
         # -------------------------------------------------
         # For subclasses of EgStore, these must be
@@ -213,17 +218,18 @@ class Settings(EgStore):
         # -------------------------------------------------
         self.filename = filename  # this is required
         # self.restore()
-
-def app_gui():
-
-    # config1 = g.read_or_create_settings("./settings.txt")   #貌似没起作用，创建文件的是下面的代码
+def config_gui():
+# 配置页面
+# config1 = g.read_or_create_settings("./settings.txt")   #貌似没起作用，创建文件的是下面的代码
 
     settingFile = "settings.txt"
     config_app = Settings(settingFile)
     usr_id = "tjx"
-    target_server = "peidao"
+    usr_structor = "peidao"
+    APP_IP_config = "192.168.19.1"
     config_app.userId = usr_id
-    config_app.targetServer = target_server
+    config_app.usr_structor = usr_structor
+    config_app.App_IP_config = APP_IP_config
     config_app.store()
     print("\nInitial settings")
     print(config_app)
@@ -232,7 +238,7 @@ def app_gui():
 #修改配置内容GUI
     msg = "请填写要修改的配置"
     title = "参数配置"
-    fieldNames = ["*用户名","*服务名"]
+    fieldNames = ["*用户名","*机构名","IP","Port"]
     fieldValues = []
     fieldValues = g.multenterbox(msg,title,fieldNames)
     while True:
@@ -250,9 +256,100 @@ def app_gui():
 
 #修改配置文件
     usr_id = fieldValues[0]
-    target_server = fieldValues[1]
+    usr_structor = fieldValues[1]
+    APP_IP_config = fieldValues[2]
+    APP_Port_config = fieldValues[3]
     config_app.userId = usr_id
-    config_app.targetServer = target_server
+    config_app.usr_structor = usr_structor
+    if(APP_IP_config != ''):            #空字符串的表示方法，和空值（None）是不一样的。
+        config_app.App_IP_config = APP_IP_config
+    if(APP_Port_config != ''):
+        config_app.App_Port_config = APP_Port_config
     config_app.store()
     print("\nInitial settings")
     print(config_app)
+
+def xunmo_run():
+    mouse_obj = mouse_event
+
+    count = 0
+    while   count < 10:
+        # 到达指定位置，按下左键
+        print('墨侠')
+        # move是移动到当前的相对位置，所以要先设定当前位置，再move，move的参数是相对误差（5，-5）,直接调用鼠标移动函数
+        mouse_obj.point_set_x = 1268
+        mouse_obj.point_set_y = 678
+        mouse_obj.botton_click = mouse_click_botton.CLICK_LEFT_BOTTON
+        mouse_obj.mouse_point_move(mouse_obj)    # 移动到墨侠按钮
+        mouse_obj.mouse_click(mouse_obj)  #按下左键
+        time.sleep(5)
+
+        print('寻墨')
+        mouse_obj.point_set_x = 793
+        mouse_obj.point_set_y = 384
+        mouse_obj.botton_click = mouse_click_botton.CLICK_LEFT_BOTTON
+        mouse_obj.mouse_point_move(mouse_obj)    # 移动到寻墨按钮
+        mouse_obj.mouse_click(mouse_obj)  #按下左键
+        time.sleep(5)
+
+
+        print('开始共鸣')
+        mouse_obj.point_set_x = 1241
+        mouse_obj.point_set_y = 365
+        mouse_obj.botton_click = mouse_click_botton.CLICK_LEFT_BOTTON
+        mouse_obj.mouse_point_move(mouse_obj)    # 移动到开始共鸣按钮
+        mouse_obj.mouse_click(mouse_obj)  #按下左键
+        time.sleep(5)
+
+        print('开始寻墨')
+        mouse_obj.point_set_x = 1086
+        mouse_obj.point_set_y = 585
+        mouse_obj.botton_click = mouse_click_botton.CLICK_LEFT_BOTTON
+        mouse_obj.mouse_point_move(mouse_obj)    # 移动到开始寻墨按钮
+        mouse_obj.mouse_click(mouse_obj)  #按下左键
+        time.sleep(5)
+
+        print('开始寻墨确认')
+        mouse_obj.point_set_x = 964
+        mouse_obj.point_set_y = 377
+        mouse_obj.botton_click = mouse_click_botton.CLICK_LEFT_BOTTON
+        mouse_obj.mouse_point_move(mouse_obj)    # 移动到开始寻墨确认按钮
+        mouse_obj.mouse_click(mouse_obj)  #按下左键
+        time.sleep(5)
+
+        print('自动探索')
+        mouse_obj.point_set_x = 1036
+        mouse_obj.point_set_y = 572
+        mouse_obj.botton_click = mouse_click_botton.CLICK_LEFT_BOTTON
+        mouse_obj.mouse_point_move(mouse_obj)    # 移动到自动探索按钮
+        mouse_obj.mouse_click(mouse_obj)  #按下左键
+        time.sleep(5)
+
+        print('自动探索确认')
+        mouse_obj.point_set_x = 928
+        mouse_obj.point_set_y = 346
+        mouse_obj.botton_click = mouse_click_botton.CLICK_LEFT_BOTTON
+        mouse_obj.mouse_point_move(mouse_obj)    # 移动到开始寻墨确认按钮
+        mouse_obj.mouse_click(mouse_obj)  #按下左键
+        time.sleep(240)  #等待寻墨完成
+
+        print('离开')
+        mouse_obj.point_set_x = 1064
+        mouse_obj.point_set_y = 557
+        mouse_obj.botton_click = mouse_click_botton.CLICK_LEFT_BOTTON
+        mouse_obj.mouse_point_move(mouse_obj)    # 移动到离开按钮
+        mouse_obj.mouse_click(mouse_obj)  #按下左键
+        time.sleep(2)  #等待寻墨完成
+
+def app_gui():
+    main_button_choices = ("日常任务","自动寻墨","自动爬塔","配置页面","终止程序")
+    richang_button_choices = ("自动副本","自动阵图","自动璇玑","自动分解")
+#主界面
+    button_return = g.buttonbox('仅供学习使用，如造成损失，使用者责任自负！','蜀山传奇辅助脚本',choices=("日常任务","自动寻墨","自动爬塔","配置页面","终止程序"))
+    if button_return == main_button_choices[0]:
+        choice_return = g.multchoicebox('请选择自动打怪的类型，可多选','',choices=("自动副本","自动阵图","自动璇玑","自动分解"))
+    elif button_return == main_button_choices[1]:
+        xunmo_run()
+    elif button_return == main_button_choices[3]:
+        config_gui()
+

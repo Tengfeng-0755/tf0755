@@ -1,6 +1,6 @@
 
-import  cv2
-import numpy as np
+import  cv2 #安装了opencv-python，正常了
+# import numpy as np
 
 #这里最大的坑，是cv的imread,imwrite是不支持中文的，无论路径还是文件名
 def matchImg(imgsrc,imgobj):

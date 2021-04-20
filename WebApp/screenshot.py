@@ -10,11 +10,11 @@
     # screen_shot_box(box_l)
 ###################################################################
 
-from PIL import Image
-from PIL import ImageGrab
-import imagehash3
-import tempfile
-import atexit
+# from PIL import Image
+# from PIL import ImageGrab
+# import imagehash3
+# import tempfile
+# import atexit
 import os
 from enum import Enum
 
