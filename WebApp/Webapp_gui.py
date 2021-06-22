@@ -352,4 +352,6 @@ def app_gui():
         xunmo_run()
     elif button_return == main_button_choices[3]:
         config_gui()
+    elif button_return == main_button_choices[4]:
+        exit()
 
